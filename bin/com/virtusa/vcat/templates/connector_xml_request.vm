@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<$connector.Method.Name>
+#foreach($parameter in $connector.Method.Parameters)
+	<$parameter.Name></$parameter.Name>
+#end
+</$connector.Method.Name>

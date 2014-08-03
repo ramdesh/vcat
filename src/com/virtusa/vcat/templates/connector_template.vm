@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="$connector.Method.Name" xmlns="http://ws.apache.org/ns/synapse">
+	#foreach($parameter in $connector.Method.Parameters)
+	<parameter name="$parameter.Name" description="The $parameter.Name" />
+	#end
+	<sequence>
+		#foreach($parameter in $connector.Method.Parameters)
+		<property expression="$func:$parameter.Name" name="uri.var.$parameter.Name" />
+		#end
+		#if($connector.Type == "java")
+		<class name="org.wso2.carbon.connector.$connector.Name$utility.getPeriod()$utility.firstToUpperCase($connector.Method.Name)" />
+		#end
+	</sequence>
+</template>

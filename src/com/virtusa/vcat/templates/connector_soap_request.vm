@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="wso2.connector.$connector.Name">
+   <soapenv:Header/>
+   <soapenv:Body>
+	<$connector.Method.Name>
+	#foreach($parameter in $connector.Method.Parameters)
+		<urn:$parameter.Name></urn:$parameter.Name>
+	#end
+	</$connector.Method.Name>
+   </soapenv:Body>
+</soapenv:Envelope>

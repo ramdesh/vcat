@@ -1,0 +1,5 @@
+{
+#foreach($parameter in $connector.Method.Parameters)
+	"$parameter.Name" : "",
+#end
+}

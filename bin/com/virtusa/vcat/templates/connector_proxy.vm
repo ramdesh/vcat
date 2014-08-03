@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="$connector.Name_$connector.Method.Name" transports="https,http" statistics="disable" trace="disable" startOnLoad="true">
+	<target>
+		<inSequence>
+		#foreach($parameter in $connector.Method.Parameters)
+			#if($connector.MessageType == "xml")
+			<property name="$parameter.Name" expression="//$parameter.Name/text()" />
+			#elseif($connector.MessageType == "json")
+			<property name="$parameter.Name" expression="json-eval($.$parameter.Name)" />
+			#else
+			<property xmlns:ns="wso2.connector.$connector.Name" name="$parameter.Name" expression="//ns:$parameter.Name"/>
+			#end
+		#end
+			<$connector.Name$utility.getPeriod()$connector.Method.Name>
+			#foreach($parameter in $connector.Method.Parameters)
+				<$parameter.Name>{$ctx:$parameter.Name}</$parameter.Name>
+			#end
+			</$connector.Name$utility.getPeriod()$connector.Method.Name>
+			<respond />
+		</inSequence>
+		<outSequence>
+			<log />
+			<send />
+		</outSequence>
+	</target>
+	<description />
+</proxy>  

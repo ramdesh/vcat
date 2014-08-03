@@ -13,7 +13,11 @@ import java.util.logging.Logger;
 
 import au.com.bytecode.opencsv.CSVReader;
 
-
+/**
+ * Main class for vCat.
+ * 
+ *
+ */
 public class VCatMain {
 
 	private final HashMap<String, ArrayList<String>> methodsAndParams = new HashMap<String, ArrayList<String>>();
@@ -23,26 +27,25 @@ public class VCatMain {
 		try {
 			csvReader = new CSVReader(new FileReader(VCatConstants.CONFIG_DIR
 					+ File.separator + VCatConstants.CONFIG_CSV_FILENAME));
+			//Read in CSV file contents.
 			List content = csvReader.readAll();
 			Scanner userInput = new Scanner(System.in);
 			System.out.print("Enter the name of the connector... ");
 			String connectorName = userInput.nextLine();
 			System.out.print("Select Technology - Java(J)/Rest(R)?... ");
 			String connectorTech = userInput.next();
-			String messageType = "x";
-			if (connectorTech.equalsIgnoreCase("r")) {
-				System.out.print("Select Message Type - XML(X)/JSON(J)?... ");
-				messageType = userInput.next();
-			}
-			
+
+			System.out.print("Select Message Type - XML(X)/JSON(J)/SOAP(S)?... ");
+			String messageType = userInput.next();
+
 		} catch (FileNotFoundException ex) {
-			Logger.getLogger(VCatMain.class.getName()).log(
-					Level.SEVERE, null, ex);
+			Logger.getLogger(VCatMain.class.getName()).log(Level.SEVERE, null,
+					ex);
 		} catch (IOException ioe) {
-			Logger.getLogger(VCatMain.class.getName()).log(
-					Level.SEVERE, null, ioe);
+			Logger.getLogger(VCatMain.class.getName()).log(Level.SEVERE, null,
+					ioe);
 		}
-		
+
 	}
 
 }

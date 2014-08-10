@@ -7,6 +7,10 @@ package com.virtusa.vcat.templates;
  *
  */
 public class ConnectorDescriptor {
+	
+	public ConnectorDescriptor(final String name) {
+		this.name = name;
+	}
 	/**
 	 * The name of the connector.
 	 */

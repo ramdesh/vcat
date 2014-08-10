@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="$connector.Component.Name" type="synapse/template">
+  <subComponents>
+  #foreach($method in $connector.Component.Methods)
+  	<component name="$method.Name">
+      <file>$method.Name.xml</file>
+      <description>$method.Description</description>
+    </component>
+  #end
+  </subComponents>
+</component>

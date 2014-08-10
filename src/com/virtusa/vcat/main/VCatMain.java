@@ -7,9 +7,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.virtusa.vcat.templates.ConnectorComponentDescriptor;
+import com.virtusa.vcat.templates.ConnectorDescriptor;
 
 import au.com.bytecode.opencsv.CSVReader;
 
@@ -37,6 +41,17 @@ public class VCatMain {
 
 			System.out.print("Select Message Type - XML(X)/JSON(J)/SOAP(S)?... ");
 			String messageType = userInput.next();
+			
+			ConnectorDescriptor connectorDescriptor = new ConnectorDescriptor(connectorName);
+			Map<String, ConnectorComponentDescriptor> components = new HashMap<String, ConnectorComponentDescriptor>();
+			
+			for (int i = 0; i < content.size(); i++) {
+				String[] currentRow = (String[])content.get(i);
+				String currentComponent = currentRow[0];
+				if (!components.containsKey(currentComponent)) {
+				}
+				
+			}
 
 		} catch (FileNotFoundException ex) {
 			Logger.getLogger(VCatMain.class.getName()).log(Level.SEVERE, null,

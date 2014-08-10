@@ -13,6 +13,12 @@ public class ConnectorMethodDescriptor {
 	 */
 	private String name;
 	/**
+	 * The method description.
+	 */
+	private String description;
+	
+
+	/**
 	 * List of parameters corresponding to this method.
 	 */
 	private ArrayList<ConnectorMethodParameterDescriptor> parameters;
@@ -30,7 +36,19 @@ public class ConnectorMethodDescriptor {
 	public void setName(String name) {
 		this.name = name;
 	}
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
 
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	/**
 	 * @return the parameters
 	 */

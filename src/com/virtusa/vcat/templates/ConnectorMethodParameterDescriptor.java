@@ -11,6 +11,10 @@ public class ConnectorMethodParameterDescriptor {
 	 * Parameter name.
 	 */
 	private String name;
+	
+	public ConnectorMethodParameterDescriptor(final String name) {
+		this.name = name;
+	}
 
 	/**
 	 * @return the name

@@ -1,6 +1,6 @@
 package com.virtusa.vcat.templates;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Method descriptor for Velocity. This is the $connector.Method var in the Velocity context.
@@ -17,11 +17,14 @@ public class ConnectorMethodDescriptor {
 	 */
 	private String description;
 	
-
+	public ConnectorMethodDescriptor(final String name, final String description) {
+		this.name = name;
+		this.description = description;
+	}
 	/**
 	 * List of parameters corresponding to this method.
 	 */
-	private ArrayList<ConnectorMethodParameterDescriptor> parameters;
+	private List<ConnectorMethodParameterDescriptor> parameters;
 	
 	/**
 	 * @return the name
@@ -52,7 +55,7 @@ public class ConnectorMethodDescriptor {
 	/**
 	 * @return the parameters
 	 */
-	public ArrayList<ConnectorMethodParameterDescriptor> getParameters() {
+	public List<ConnectorMethodParameterDescriptor> getParameters() {
 		return parameters;
 	}
 
@@ -60,7 +63,7 @@ public class ConnectorMethodDescriptor {
 	 * @param parameters the parameters to set
 	 */
 	public void setParameters(
-			ArrayList<ConnectorMethodParameterDescriptor> parameters) {
+			List<ConnectorMethodParameterDescriptor> parameters) {
 		this.parameters = parameters;
 	}
 

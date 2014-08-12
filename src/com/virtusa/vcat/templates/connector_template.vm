@@ -8,7 +8,12 @@
 		<property expression="$func:$parameter.Name" name="uri.var.$parameter.Name" />
 		#end
 		#if($connector.Type == "java")
-		<class name="org.wso2.carbon.connector.$connector.Name$utility.getPeriod()$utility.firstToUpperCase($connector.Method.Name)" />
+		<class name="org.wso2.carbon.connector.$connector.Name.$utility.firstToUpperCase($connector.Method.Name)" />
 		#end
+		<call>
+			<endpoint>
+				<http method="post" uri-template="{uri.var.apiUrl}" />
+			</endpoint>
+		</call>
 	</sequence>
 </template>

@@ -3,9 +3,9 @@
 	<target>
 		<inSequence>
 		#foreach($parameter in $connector.Method.Parameters)
-			#if($connector.MessageType == "xml")
+			#if($connector.MessageType == "x")
 			<property name="$parameter.Name" expression="//$parameter.Name/text()" />
-			#elseif($connector.MessageType == "json")
+			#elseif($connector.MessageType == "j")
 			<property name="$parameter.Name" expression="json-eval($.$parameter.Name)" />
 			#else
 			<property xmlns:ns="wso2.connector.$connector.Name" name="$parameter.Name" expression="//ns:$parameter.Name"/>

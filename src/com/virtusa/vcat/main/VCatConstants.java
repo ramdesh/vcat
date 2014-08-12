@@ -18,9 +18,15 @@ public final class VCatConstants {
 	 */
 	public static final String CONFIG_CSV_FILENAME = "methods.csv";
 	/**
+	 * Path to drop Java classes for connectors.
+	 */
+	public static final String JAVA_PACKAGE_PATH = "org" + File.separator + "wso2" + File.separator + "carbon" 
+			+ File.separator + "connector";
+	/**
 	 * Path to velocity templates.
 	 */
-	public static final String TEMPLATE_PATH = "com/virtusa/vcat/templates";
+	public static final String TEMPLATE_PATH = "com" + File.separator + "virtusa" + File.separator + "vcat" 
+	 + File.separator + "templates" + File.separator;
 	/**
 	 * Velocity template for connector Proxy.
 	 */
@@ -46,6 +52,10 @@ public final class VCatConstants {
 	 */
 	public static final String JAVA_CLASS_TEMPLATE_NAME = "connector_java_class.vm";
 	/**
+	 * Velocity template for connector component.
+	 */
+	public static final String COMPONENT_TEMPLATE_NAME = "connector_component.vm";
+	/**
 	 * Redirects to the correct path for proxy and request folders.
 	 */
 	public static final String PATH_CORRECTOR = ".." + File.separator + ".." + File.separator + ".."
@@ -53,10 +63,10 @@ public final class VCatConstants {
 	/**
 	 * Proxy folder name.
 	 */
-	public static final String PROXY_FOLDER_PATH = "proxy" + File.separator;
+	public static final String PROXY_FOLDER_PATH = PATH_CORRECTOR + "proxy" + File.separator;
 	/**
 	 * Request folder name/path.
 	 */
-	public static final String REQUEST_FOLDER_PATH = "requests" + File.separator;
+	public static final String REQUEST_FOLDER_PATH = PATH_CORRECTOR + "requests" + File.separator;
 
 }

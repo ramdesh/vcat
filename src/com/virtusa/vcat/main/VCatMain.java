@@ -32,8 +32,6 @@ import au.com.bytecode.opencsv.CSVReader;
  */
 public class VCatMain {
 
-	public static VelocityEngine velocityEngine;
-
 	public static void main(String[] args) {
 		CSVReader csvReader = null;
 		try {
@@ -56,18 +54,15 @@ public class VCatMain {
 			connectorDescriptor.setMessageType(messageType.toLowerCase());
 			Map<String, ConnectorComponentDescriptor> components = new HashMap<String, ConnectorComponentDescriptor>();
 
-			velocityEngine = new VelocityEngine();
-			velocityEngine.setProperty(RuntimeConstants.RESOURCE_LOADER,
-					"classpath");
-			velocityEngine.setProperty("classpath.resource.loader.class",
-					ClasspathResourceLoader.class.getName());
-			velocityEngine.init();
+			
 
 			VelocityContext velocityContext = new VelocityContext();
 			
 			GeneratorUtility generatorUtility = new GeneratorUtility();
 			
 			GeneratorHelper generatorHelper = new GeneratorHelper();
+			
+			velocityContext.put("utility", generatorUtility);
 
 			// creating relevant folders
 			File proxyFolder = new File(VCatConstants.CONFIG_DIR
@@ -97,6 +92,16 @@ public class VCatMain {
 				currentComponent.addMethod(currentMethod);
 
 				connectorDescriptor.setMethod(currentMethod);
+				//start generating!
+				velocityContext.put("connector", connectorDescriptor);
+				generatorHelper.buildProxyFile(velocityContext, proxyFolder, connectorDescriptor);
+				generatorHelper.buildRequestFile(velocityContext, requestFolder, connectorDescriptor);
+				
+				if (connectorTech.equalsIgnoreCase("j")) {
+					
+				}
+				
+				
 
 			}
 

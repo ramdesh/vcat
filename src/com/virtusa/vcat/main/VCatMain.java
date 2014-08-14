@@ -69,6 +69,13 @@ public class VCatMain {
 					+ File.separator + VCatConstants.PROXY_FOLDER_PATH);
 			File requestFolder = new File(VCatConstants.CONFIG_DIR
 					+ File.separator + VCatConstants.REQUEST_FOLDER_PATH);
+			
+			File javaFolder = null;
+			
+			if (connectorTech.equalsIgnoreCase("j")) {
+				javaFolder = new File(VCatConstants.CONFIG_DIR + File.separator
+						+ VCatConstants.JAVA_PACKAGE_PATH);
+			}
 
 			for (int i = 0; i < content.size(); i++) {
 				String[] currentRow = content.get(i);
@@ -99,6 +106,7 @@ public class VCatMain {
 				
 				if (connectorTech.equalsIgnoreCase("j")) {
 					
+					generatorHelper.buildJavaClass(velocityContext, javaFolder, connectorDescriptor);
 				}
 				
 				

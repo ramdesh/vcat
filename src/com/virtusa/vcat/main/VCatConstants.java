@@ -20,7 +20,7 @@ public final class VCatConstants {
 	/**
 	 * Path to drop Java classes for connectors.
 	 */
-	public static final String JAVA_PACKAGE_PATH = "org" + File.separator + "wso2" + File.separator + "carbon" 
+	public static final String JAVA_PACKAGE_PATH = "java" + File.separator + "org" + File.separator + "wso2" + File.separator + "carbon" 
 			+ File.separator + "connector";
 	/**
 	 * Path to velocity templates.

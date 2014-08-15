@@ -13,9 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.VelocityEngine;
-import org.apache.velocity.runtime.RuntimeConstants;
-import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
 import com.virtusa.vcat.templates.ConnectorComponentDescriptor;
 import com.virtusa.vcat.templates.ConnectorDescriptor;
@@ -76,7 +73,6 @@ public class VCatMain {
 				javaFolder = new File(VCatConstants.CONFIG_DIR + File.separator
 						+ VCatConstants.JAVA_PACKAGE_PATH);
 			}
-
 			for (int i = 0; i < content.size(); i++) {
 				String[] currentRow = content.get(i);
 				String currentComponentName = currentRow[0];
@@ -96,6 +92,7 @@ public class VCatMain {
 							currentMethodParams[j]));
 				}
 				currentMethod.setParameters(paramList);
+				
 				currentComponent.addMethod(currentMethod);
 
 				connectorDescriptor.setMethod(currentMethod);
@@ -105,12 +102,16 @@ public class VCatMain {
 				generatorHelper.buildRequestFile(velocityContext, requestFolder, connectorDescriptor);
 				
 				if (connectorTech.equalsIgnoreCase("j")) {
-					
 					generatorHelper.buildJavaClass(velocityContext, javaFolder, connectorDescriptor);
 				}
 				
 				
 
+			}
+			//generating component folders and synapse templates
+			for (String componentName : components.keySet()) {
+				File componentFolder = new File(VCatConstants.CONFIG_DIR + File.separator + components.get(componentName).getName());
+				generatorHelper.buildComponent(velocityContext, componentFolder, components.get(componentName));
 			}
 
 		} catch (FileNotFoundException ex) {

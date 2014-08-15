@@ -23,8 +23,9 @@ public class GeneratorHelper {
 				ClasspathResourceLoader.class.getName());
 		velocityEngine.init();
 	}
-	public void buildSynapseTemplate(VelocityContext velocityContext,
+	private void buildSynapseTemplate(VelocityContext velocityContext,
 			File templateFolderPath, ConnectorDescriptor connector) {
+		
 		
 	}
 	public void buildProxyFile(VelocityContext velocityContext,
@@ -42,8 +43,12 @@ public class GeneratorHelper {
 
 	}
 	
-	public void buildComponentFile(VelocityContext velocityContext, 
-			File componentFolderPath, Map<String, ConnectorComponentDescriptor> components) {
+	public void buildComponent(VelocityContext velocityContext, 
+			File componentFolderPath, ConnectorComponentDescriptor component) {
+		if (!componentFolderPath.exists()) {
+			componentFolderPath.mkdirs();
+		}
+		velocityContext.put("component", component);
 		
 	}
 }

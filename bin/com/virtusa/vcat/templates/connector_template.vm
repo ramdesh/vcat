@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<template name="$connector.Method.Name" xmlns="http://ws.apache.org/ns/synapse">
-	#foreach($parameter in $connector.Method.Parameters)
+<template name="$method.Name" xmlns="http://ws.apache.org/ns/synapse">
+	#foreach($parameter in $method.Parameters)
 	<parameter name="$parameter.Name" description="The $parameter.Name" />
 	#end
 	<sequence>
@@ -8,7 +8,7 @@
 		<property expression="$func:$parameter.Name" name="uri.var.$parameter.Name" />
 		#end
 		#if($connector.Type == "java")
-		<class name="org.wso2.carbon.connector.$connector.Name.$utility.firstToUpperCase($connector.Method.Name)" />
+		<class name="org.wso2.carbon.connector.$connector.Name.$utility.firstToUpperCase($method.Name)" />
 		#end
 		<call>
 			<endpoint>

@@ -102,7 +102,7 @@ public class VCatMain {
 				generatorHelper.buildRequestFile(velocityContext, requestFolder, connectorDescriptor);
 				
 				if (connectorTech.equalsIgnoreCase("j")) {
-					generatorHelper.buildJavaClass(velocityContext, javaFolder, connectorDescriptor);
+					generatorHelper.buildJavaClass(velocityContext, javaFolder, connectorDescriptor, generatorUtility);
 				}
 				
 				

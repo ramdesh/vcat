@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class ConnectorComponentDescriptor {
 	public ConnectorComponentDescriptor(final String name) {
 		this.name = name;
+		this.methods = new ArrayList<ConnectorMethodDescriptor>();
 	}
 	/**
 	 * The name of the component.

@@ -1,0 +1,2 @@
+googledrive_permission,insertPermissionToFile,fileId:emailMessage:sendNotificationEmails:role:type:value,Inserts a permission for a file,
+googledrive_permission,listFilePermissions,fileId,Lists a file's permissions,

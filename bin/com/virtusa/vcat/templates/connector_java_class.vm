@@ -15,14 +15,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.carbon.connector.$utility.toLowerCase($connector.ParentConnector);
+package org.wso2.carbon.connector.$utility.toLowerCase($connector.Name);
 
 import org.apache.synapse.MessageContext;
 import org.wso2.carbon.connector.core.*;
 
-public class $utility.firstToUpperCase($connector.ParentConnector)$utility.firstToUpperCase($connector.Name) extends AbstractConnector {
+public class $utility.firstToUpperCase($connector.Name)$utility.firstToUpperCase($connector.Method.Name) extends AbstractConnector {
 	public void connect(MessageContext messageContext) {
-#foreach($parameter in $connector.Parameters)
+#foreach($parameter in $connector.Method.Parameters)
         String $parameter.Name = (String)messageContext.getProperty("$parameter.Name");
 #end
         try {

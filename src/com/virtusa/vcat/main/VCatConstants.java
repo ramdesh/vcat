@@ -8,7 +8,6 @@ import java.io.File;
  *
  */
 public final class VCatConstants {
-	
 	/**
 	 * Directory where vCat will be running.
 	 */
@@ -30,31 +29,31 @@ public final class VCatConstants {
 	/**
 	 * Velocity template for connector Proxy.
 	 */
-	public static final String PROXY_TEMPLATE_NAME = "connector_proxy.vm";
+	public static final String PROXY_TEMPLATE_NAME = TEMPLATE_PATH + "connector_proxy.vm";
 	/**
 	 * Velocity template for connector JSON Request.
 	 */
-	public static final String JSON_REQUEST_TEMPLATE_NAME = "connector_json_request.vm";
+	public static final String JSON_REQUEST_TEMPLATE_NAME = TEMPLATE_PATH + "connector_json_request.vm";
 	/**
 	 * Velocity template for connector XML Request.
 	 */
-	public static final String XML_REQUEST_TEMPLATE_NAME = "connector_xml_request.vm";
+	public static final String XML_REQUEST_TEMPLATE_NAME = TEMPLATE_PATH + "connector_xml_request.vm";
 	/**
 	 * Velocity template for connector SOAP Request.
 	 */
-	public static final String SOAP_REQUEST_TEMPLATE_NAME = "connector_soap_request.vm";
+	public static final String SOAP_REQUEST_TEMPLATE_NAME = TEMPLATE_PATH + "connector_soap_request.vm";
 	/**
 	 * Velocity template for connector Synapse Template.
 	 */
-	public static final String SYNAPSE_TEMPLATE_NAME = "connector_template.vm";
+	public static final String SYNAPSE_TEMPLATE_NAME = TEMPLATE_PATH + "connector_template.vm";
 	/**
 	 * Velocity template for connector Java class for class mediator.
 	 */
-	public static final String JAVA_CLASS_TEMPLATE_NAME = "connector_java_class.vm";
+	public static final String JAVA_CLASS_TEMPLATE_NAME = TEMPLATE_PATH + "connector_java_class.vm";
 	/**
 	 * Velocity template for connector component.
 	 */
-	public static final String COMPONENT_TEMPLATE_NAME = "connector_component.vm";
+	public static final String COMPONENT_TEMPLATE_NAME = TEMPLATE_PATH + "connector_component.vm";
 	/**
 	 * Redirects to the correct path for proxy and request folders.
 	 */
@@ -63,10 +62,11 @@ public final class VCatConstants {
 	/**
 	 * Proxy folder name.
 	 */
-	public static final String PROXY_FOLDER_PATH = PATH_CORRECTOR + "proxy" + File.separator;
+	public static final String PROXY_FOLDER_PATH = "proxy" + File.separator;
 	/**
 	 * Request folder name/path.
 	 */
-	public static final String REQUEST_FOLDER_PATH = PATH_CORRECTOR + "requests" + File.separator;
+	public static final String REQUEST_FOLDER_PATH = "requests" + File.separator;
+	
 
 }

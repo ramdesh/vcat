@@ -14,13 +14,13 @@ import java.util.logging.Logger;
 
 import org.apache.velocity.VelocityContext;
 
+import au.com.bytecode.opencsv.CSVReader;
+
 import com.virtusa.vcat.templates.ConnectorComponentDescriptor;
 import com.virtusa.vcat.templates.ConnectorDescriptor;
 import com.virtusa.vcat.templates.ConnectorMethodDescriptor;
 import com.virtusa.vcat.templates.ConnectorMethodParameterDescriptor;
 import com.virtusa.vcat.templates.GeneratorUtility;
-
-import au.com.bytecode.opencsv.CSVReader;
 
 /**
  * Main class for vCat.
@@ -71,7 +71,8 @@ public class VCatMain {
 			
 			if (connectorTech.equalsIgnoreCase("j")) {
 				javaFolder = new File(VCatConstants.CONFIG_DIR + File.separator
-						+ VCatConstants.JAVA_PACKAGE_PATH);
+						+ VCatConstants.JAVA_PACKAGE_PATH + File.separator 
+						+ generatorUtility.toLowerCase(connectorName));
 			}
 			for (int i = 0; i < content.size(); i++) {
 				String[] currentRow = content.get(i);
@@ -81,6 +82,7 @@ public class VCatMain {
 							new ConnectorComponentDescriptor(
 									currentComponentName));
 				}
+				;
 				ConnectorComponentDescriptor currentComponent = components
 						.get(currentComponentName);
 				ConnectorMethodDescriptor currentMethod = new ConnectorMethodDescriptor(

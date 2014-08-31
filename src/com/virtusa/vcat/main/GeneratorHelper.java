@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -19,6 +20,7 @@ import com.virtusa.vcat.templates.GeneratorUtility;
 public class GeneratorHelper {
 
 	private static VelocityEngine velocityEngine;
+	private Logger log;
 
 	public GeneratorHelper() {
 		velocityEngine = new VelocityEngine();
@@ -27,10 +29,12 @@ public class GeneratorHelper {
 		velocityEngine.setProperty("classpath.resource.loader.class",
 				ClasspathResourceLoader.class.getName());
 		velocityEngine.init();
+		log = Logger.getLogger("VCAT");
 	}
 
 	private void buildSynapseTemplate(VelocityContext velocityContext,
 			File templateFolderPath, ConnectorMethodDescriptor method) throws IOException {
+		log.info("Building Synapse Template for " + method.getName());
 		velocityContext.put("method", method);
 		Template methodVelocityTemplate = velocityEngine.getTemplate(VCatConstants.SYNAPSE_TEMPLATE_NAME);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(
@@ -38,6 +42,7 @@ public class GeneratorHelper {
 		methodVelocityTemplate.merge(velocityContext, writer);
 		writer.flush();
 		writer.close();
+		log.info("...Done");
 
 	}
 
@@ -46,12 +51,14 @@ public class GeneratorHelper {
 		if (!proxyFolderPath.exists()) {
 			proxyFolderPath.mkdirs();
 		}
+		log.info("Building proxy for " + connector.getMethod().getName());
 		Template proxyVelocityTemplate = velocityEngine.getTemplate(VCatConstants.PROXY_TEMPLATE_NAME);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(
 				proxyFolderPath.getAbsoluteFile() + File.separator + connector.getMethod().getName() + ".xml"));
 		proxyVelocityTemplate.merge(velocityContext, writer);
 		writer.flush();
 		writer.close();
+		log.info("...Done");
 	}
 
 	public void buildRequestFile(VelocityContext velocityContext,
@@ -59,6 +66,7 @@ public class GeneratorHelper {
 		if (!requestFolderPath.exists()) {
 			requestFolderPath.mkdirs();
 		}
+		log.info("Building request file for " + connector.getMethod().getName());
 		Template requestVelocityTemplate = null;
 		String fileExtension = ".xml";
 		if (connector.getMessageType().equalsIgnoreCase("j")) {
@@ -75,7 +83,7 @@ public class GeneratorHelper {
 		requestVelocityTemplate.merge(velocityContext, writer);
 		writer.flush();
 		writer.close();
-
+		log.info("...Done");
 	}
 
 	public void buildJavaClass(VelocityContext velocityContext,
@@ -83,6 +91,7 @@ public class GeneratorHelper {
 		if (!javaClassFolderPath.exists()) {
 			javaClassFolderPath.mkdirs();
 		}
+		log.info("Building Java Class for " + connector.getMethod().getName());
 		Template javaClassVelocityTemplate = velocityEngine.getTemplate(VCatConstants.JAVA_CLASS_TEMPLATE_NAME);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(
 				javaClassFolderPath.getAbsoluteFile() + File.separator + 
@@ -90,6 +99,7 @@ public class GeneratorHelper {
 		javaClassVelocityTemplate.merge(velocityContext, writer);
 		writer.flush();
 		writer.close();
+		log.info("...Done");
 	}
 
 	public void buildComponent(VelocityContext velocityContext,
@@ -97,6 +107,7 @@ public class GeneratorHelper {
 		if (!componentFolderPath.exists()) {
 			componentFolderPath.mkdirs();
 		}
+		log.info("Building component " + component.getName());
 		velocityContext.put("component", component);
 		Template componentVelocityTemplate = velocityEngine.getTemplate(VCatConstants.COMPONENT_TEMPLATE_NAME);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(
@@ -104,10 +115,11 @@ public class GeneratorHelper {
 		componentVelocityTemplate.merge(velocityContext, writer);
 		writer.flush();
 		writer.close();
-		
+		log.info("...Done");
 		for (int i = 0; i < component.getMethods().size(); i++) {
 			buildSynapseTemplate(velocityContext, componentFolderPath, component.getMethods().get(i));
 		}
+		
 
 	}
 }

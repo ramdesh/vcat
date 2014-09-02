@@ -4,11 +4,32 @@
 	<parameter name="$parameter.Name" description="The $parameter.Name" />
 	#end
 	<sequence>
-		#foreach($parameter in $connector.Method.Parameters)
+		#foreach($parameter in $method.Parameters)
 		<property expression="$func:$parameter.Name" name="uri.var.$parameter.Name" />
 		#end
 		#if($connector.Type == "java")
 		<class name="org.wso2.carbon.connector.$connector.Name.$utility.firstToUpperCase($method.Name)" />
+		#end
+		#if($connector.MessageType = "j")
+		<payloadFactory media-type="json">
+			<format>
+				{
+					"key":"value"
+				}
+			</format>
+			<args>
+				<arg expression="get-property('uri.var.param')" />
+			</args>
+		</payloadFactory>
+		#else
+		<payloadFactory media-type="xml">
+			<format>
+				<key>value</key>
+			</format>
+			<args>
+				<arg expression="get-property('uri.var.param')" />
+			</args>
+		</payloadFactory>
 		#end
 		<call>
 			<endpoint>

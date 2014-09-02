@@ -3,7 +3,7 @@
   <subComponents>
   #foreach($method in $component.Methods)
   	<component name="$method.Name">
-      <file>$method.Name.xml</file>
+      <file>$method.Name$utility.getPeriod()xml</file>
       <description>$method.Description</description>
     </component>
   #end

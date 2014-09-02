@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<proxy xmlns="http://ws.apache.org/ns/synapse" name="$connector.Name_$connector.Method.Name" transports="https,http" statistics="disable" trace="disable" startOnLoad="true">
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="$connector.Name$utility.getUnderscore()$connector.Method.Name" transports="https,http" statistics="disable" trace="disable" startOnLoad="true">
 	<target>
 		<inSequence>
 		#foreach($parameter in $connector.Method.Parameters)

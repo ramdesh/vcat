@@ -33,4 +33,11 @@ public final class GeneratorUtility {
 	public String getPeriod() {
 		return ".";
 	}
+	/**
+	 * Returns the underscore character.
+	 * @return the "_" character
+	 */
+	public String getUnderscore() {
+	   return "_"; 
+	}
 }

@@ -23,8 +23,24 @@ public class ConnectorDescriptor {
 	 * The current method that Velocity will be generating files for.
 	 */
 	private ConnectorMethodDescriptor method;
+	/**
+	 * Connector type; Java or REST.
+	 */
+	private String type;
 	
-	public String getName() {
+	
+    public String getType() {
+    
+        return type;
+    }
+
+    
+    public void setType(String type) {
+    
+        this.type = type;
+    }
+
+    public String getName() {
 		return name;
 	}
 

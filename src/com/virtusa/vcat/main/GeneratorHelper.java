@@ -54,7 +54,8 @@ public class GeneratorHelper {
 		log.info("Building proxy for " + connector.getMethod().getName());
 		Template proxyVelocityTemplate = velocityEngine.getTemplate(VCatConstants.PROXY_TEMPLATE_NAME);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(
-				proxyFolderPath.getAbsoluteFile() + File.separator + connector.getMethod().getName() + ".xml"));
+				proxyFolderPath.getAbsoluteFile() + File.separator + 
+				connector.getName() + "_" + connector.getMethod().getName() + ".xml"));
 		proxyVelocityTemplate.merge(velocityContext, writer);
 		writer.flush();
 		writer.close();

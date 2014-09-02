@@ -49,6 +49,7 @@ public class VCatMain {
 			ConnectorDescriptor connectorDescriptor = new ConnectorDescriptor(
 					connectorName);
 			connectorDescriptor.setMessageType(messageType.toLowerCase());
+			connectorDescriptor.setType("rest");
 			Map<String, ConnectorComponentDescriptor> components = new HashMap<String, ConnectorComponentDescriptor>();
 
 			
@@ -59,7 +60,7 @@ public class VCatMain {
 			
 			GeneratorHelper generatorHelper = new GeneratorHelper();
 			
-			velocityContext.put("utility", generatorUtility);
+			velocityContext.put("utility", generatorUtility); 
 
 			// creating relevant folders
 			File proxyFolder = new File(VCatConstants.CONFIG_DIR
@@ -70,6 +71,7 @@ public class VCatMain {
 			File javaFolder = null;
 			
 			if (connectorTech.equalsIgnoreCase("j")) {
+			    connectorDescriptor.setType("java");
 				javaFolder = new File(VCatConstants.CONFIG_DIR + File.separator
 						+ VCatConstants.JAVA_PACKAGE_PATH + File.separator 
 						+ generatorUtility.toLowerCase(connectorName));

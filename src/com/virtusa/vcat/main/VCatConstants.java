@@ -24,8 +24,7 @@ public final class VCatConstants {
 	/**
 	 * Path to velocity templates.
 	 */
-	public static final String TEMPLATE_PATH = "com" + File.separator + "virtusa" + File.separator + "vcat" 
-	 + File.separator + "templates" + File.separator;
+	public static final String TEMPLATE_PATH = "com/virtusa/vcat/templates/";
 	/**
 	 * Velocity template for connector Proxy.
 	 */
@@ -62,11 +61,11 @@ public final class VCatConstants {
 	/**
 	 * Proxy folder name.
 	 */
-	public static final String PROXY_FOLDER_PATH = "proxy" + File.separator;
+	public static final String PROXY_FOLDER_PATH = PATH_CORRECTOR + "proxy" + File.separator;
 	/**
 	 * Request folder name/path.
 	 */
-	public static final String REQUEST_FOLDER_PATH = "requests" + File.separator;
+	public static final String REQUEST_FOLDER_PATH = PATH_CORRECTOR + "requests" + File.separator;
 	
 
 }
